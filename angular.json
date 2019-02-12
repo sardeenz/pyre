@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "miditest": {
+    "pyre": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/miditest",
+            "outputPath": "dist/pyre",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -57,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "miditest:build"
+            "browserTarget": "pyre:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "miditest:build:production"
+              "browserTarget": "pyre:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "miditest:build"
+            "browserTarget": "pyre:build"
           }
         },
         "test": {
@@ -79,6 +80,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -102,7 +104,7 @@
         }
       }
     },
-    "miditest-e2e": {
+    "pyre-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -111,11 +113,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "miditest:serve"
+            "devServerTarget": "pyre:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "miditest:serve:production"
+              "devServerTarget": "pyre:serve:production"
             }
           }
         },
@@ -131,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "miditest"
+  "defaultProject": "pyre"
 }
