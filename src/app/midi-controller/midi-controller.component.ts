@@ -76,6 +76,7 @@ export class MidiControllerComponent implements OnInit {
       output.sendPitchBend(-1, 12);
 
       // You can chain most method calls
+      console.log('Jonathan, you should hear some more notes now...sucka mc (this is output)');
       output
         .playNote('G5', 12)
         .sendPitchBend(-0.5, 12, { time: 400 }) // After 400 ms.
@@ -108,7 +109,7 @@ export class MidiControllerComponent implements OnInit {
 
       // Check for the presence of an event listener (n such cases, you cannot use anonymous functions).
       function test(e) {
-        console.log(e);
+        console.log('logging non-anonymous function for event listener', e);
       }
       input.addListener('programchange', 12, test);
       console.log(
