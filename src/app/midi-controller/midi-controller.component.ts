@@ -26,7 +26,8 @@ export class MidiControllerComponent implements OnInit {
       console.log(WebMidi.time);
 
       // Retrieving an output port/device using its id, name or index
-      let output = WebMidi.getOutputById(WebMidi.outputs[0].id);
+      // WebMidi.outputs[0].id make sure this isn't null before using
+      let output = WebMidi.getOutputById('1234566789');
       output = WebMidi.getOutputByName('Axiom Pro 25 Ext Out');
       output = WebMidi.outputs[0];
 
