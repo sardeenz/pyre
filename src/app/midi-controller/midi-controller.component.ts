@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import WebMidi from 'webmidi';
+import WebMidi, { Input } from 'webmidi';
 
 @Component({
   selector: 'app-midi-controller',
@@ -8,6 +8,8 @@ import WebMidi from 'webmidi';
 })
 export class MidiControllerComponent implements OnInit {
   constructor() {}
+
+  input: Input;
 
   ngOnInit() {
     // Enable WebMidi.js
@@ -87,24 +89,24 @@ export class MidiControllerComponent implements OnInit {
 
 
       // Retrieve an input by name, id or index
-      let input = WebMidi.getInputByName('nanoKEY2 KEYBOARD');
-      input = WebMidi.getInputById('1809568182');
-      input = WebMidi.inputs[0];
+      this.input = WebMidi.getInputByName('nanoKEY2 KEYBOARD');
+      this.input = WebMidi.getInputById('1809568182');
+      this.input = WebMidi.inputs[0];
 
       // Listen for a 'note on' message on all channels
-      input.addListener('noteon', 'all', function(e) {
+      this.input.addListener('noteon', 'all', function(e) {
         console.log(
           'Received \'noteon\' message (' + e.note.name + e.note.octave + ').'
         );
       });
 
       // Listen to pitch bend message on channel 3
-      input.addListener('pitchbend', 3, function(e) {
+      this.input.addListener('pitchbend', 3, function(e) {
         console.log('Received \'pitchbend\' message.', e);
       });
 
       // Listen to control change message on all channels
-      input.addListener('controlchange', 'all', function(e) {
+      this.input.addListener('controlchange', 'all', function(e) {
         console.log('Received \'controlchange\' message.', e);
       });
 
@@ -112,10 +114,10 @@ export class MidiControllerComponent implements OnInit {
       function test(e) {
         console.log('logging non-anonymous function for event listener', e);
       }
-      input.addListener('programchange', 12, test);
+      this.input.addListener('programchange', 12, test);
       console.log(
         'Has event listener: ',
-        input.hasListener('programchange', 12, test)
+        this.input.hasListener('programchange', 12, test)
       );
 
       // // Remove a specific listener
